@@ -2,9 +2,11 @@
 
 import dotenv from "dotenv";
 
-import Location_component from "./components/locationSearch";
+import Location_component from "./components/locationSearch/locationSearch";
 import styles from "./page.module.css";
-import Map from "./components/Map/Map.js";
+import Map from "./components/Map/Map";
+
+
 
 dotenv.config();
 
@@ -12,13 +14,12 @@ dotenv.config();
 export default function Home() {
   return (
     <div className={styles.page}>
-      <Map />
-      <main className={styles.main}>
-        <Location_component 
-        onSearch={(address) => {
-          console.log(address)
 
-        }}/>
+      <main className={styles.main}>
+        <Location_component/>
+        <Map/>
+
+        
 
       </main>
       <footer className={styles.footer}>

@@ -1,15 +1,22 @@
 import { getGeoLocation } from "@/app/lib/getGeoLocation";
 import styles from "./map.module.css";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 
-export default async function Map() {
-  //FIX: temporary zipcode
-  // 1. Gather zip from props after user search is implemented
-  // 2. Test other zip codes (optional)
-  const geoData = await getGeoLocation(95126);
+export default function Map({ geoData }) {
+  const [locationData, setLocationData] = useState(geoData);
 
-  if (!geoData) return <p>Unable to load map data.</p>;
+  useEffect(() => {
+    if (!geoData) {
+      getGeoLocation().then((data) => {
+        setLocationData(data);
+      });
+    }
+  }, [geoData]);
 
-  const { latitude, longitude, cityName } = geoData;
+  if (!locationData) return <p>Unable to load map data.</p>;
+
+  const { latitude, longitude, cityName } = locationData;
   const apiKey = process.env.API_KEY;
   const mapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${latitude},${longitude}&zoom=14&size=400x400&key=${apiKey}`;
 
@@ -23,16 +30,15 @@ export default async function Map() {
             <span className={styles.city}> {cityName}</span>
           </p>
         </div>
-        <div>
-          <img
+          <Image
             className={styles.map}
             src={mapUrl}
             alt="Static Map"
             width={400}
             height={400}
+            priority
           />
         </div>
       </div>
-    </div>
   );
 }

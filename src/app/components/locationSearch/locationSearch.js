@@ -1,7 +1,7 @@
 "use client"
 
 import { Search } from "lucide-react"
-import styles from "../page.module.css"
+import styles from "./locationSearch.module.css"
 import { useState } from "react"
 import Button  from '@mui/material/Button';
 import Input from '@mui/material/Input';
@@ -32,8 +32,9 @@ export default function Location_component( { onSearch }) {
                 <form onSubmit={handleSubmit} id={styles.form_parent}>
                     <Input 
                     className = {styles.location_input} 
+                    id = {styles.location_text_input}
                     type="text"
-                    placeholder="Enter address"
+                    placeholder="Enter address, city, or zip code"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     />
