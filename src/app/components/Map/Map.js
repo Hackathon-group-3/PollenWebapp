@@ -1,4 +1,4 @@
-import { getGeoLocation } from "@/app/lib/getLatLong";
+import { getGeoLocation } from "@/app/lib/getGeoLocation";
 import styles from "./map.module.css";
 
 export default async function Map() {
