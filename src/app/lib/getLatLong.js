@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const getLatitudeLongitude = async (zipcode) => {
+export const getGeoLocation = async (zipcode) => {
   try {
     const response = await axios.get(
       `https://maps.googleapis.com/maps/api/geocode/json?key=${process.env.API_KEY}&components=postal_code:${zipcode}`,
