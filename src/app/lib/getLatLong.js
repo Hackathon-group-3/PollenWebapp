@@ -14,7 +14,7 @@ export const getGeoLocation = async (zipcode) => {
 
     const location = response.data.results?.[0]?.geometry?.location;
     const cityInfo = response.data.results?.[0]?.formatted_address;
-    const cityName = cityInfo.split(",")[0].trim();
+    const cityName = cityInfo.split(",").slice(0, -1).join(",").trim();
 
     if (!location) throw new Error("Location not found");
 
