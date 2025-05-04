@@ -13,6 +13,9 @@ export const getLatitudeLongitude = async (zipcode) => {
     );
 
     const location = response.data.results?.[0]?.geometry?.location;
+    const cityInfo = response.data.results?.[0]?.formatted_address;
+    const cityName = cityInfo.split(",")[0].trim();
+
     if (!location) throw new Error("Location not found");
 
     return {
