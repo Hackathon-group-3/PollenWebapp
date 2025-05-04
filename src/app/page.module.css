@@ -6,12 +6,15 @@
   --button-primary-hover: #383838;
   --button-secondary-hover: #f2f2f2;
 
-  display: grid;
+  display: flex;
+  flex-direction: column;
   grid-template-columns: 1fr 1fr; 
   min-height: 100svh;
   padding: 80px;
   gap: 64px;
   font-family: var(--font-geist-sans);
+  align-items: center;
+  justify-content: center;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -24,7 +27,22 @@
     --button-secondary-hover: #1a1a1a;
   }
 }
+.row_holder{
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
 
+  grid-row-start: 2;
+}
+.row_element{
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
 .main {
   display: flex;
   flex-direction: column;

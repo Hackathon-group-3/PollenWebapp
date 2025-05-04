@@ -1,8 +1,10 @@
 "use client";
 import Location_component from "./components/locationSearch/locationSearch";
 import styles from "./page.module.css";
-import Map from "./components/Map/Map";
+import Map from "./components/Map/Map.js";
+import PollenData from "./components/PollenSeverity/PollenData"
 import { useState } from "react";
+
 
 export default function Home() {
   const [forecastData, setForecastData] = useState(null);
@@ -46,12 +48,17 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <Location_component onSearch={handleSearch} />
+        <div className={styles.row_holder}>
+          <Map className={styles.row_element}/>
 
-        {geoData && <Map geoData={geoData} forecastData={forecastData} />}
+          <PollenData className={styles.row_element}/>
+        </div>
+
       </main>
+      <footer className={styles.footer}>
+       
+      </footer>
 
-      <footer className={styles.footer}></footer>
     </div>
   );
 }
