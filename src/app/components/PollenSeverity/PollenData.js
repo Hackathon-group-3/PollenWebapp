@@ -1,12 +1,13 @@
+import { getForecast } from "@/app/lib/getForecast";
 import PollenSeverity from "./PollenSeverity";
 
-export default function PollenData({ forecast }) {
+export default function PollenData({ geoData: forecast }) {
   //TODO use forecast object from web console and pass the correct properties here
-  if (!geoData || geoData.length === 0) {
+  if (!forecast || forecast.length === 0) {
     return <p>No forecast available.</p>;
   }
 
-  const today = geoData[0];
+  const today = forecast[0];
   const UPIndex = today?.index?.value || 0;
   const forecastText = today?.plants?.length
     ? `Main allergens: ${today.plants.map((p) => p.name).join(", ")}`
