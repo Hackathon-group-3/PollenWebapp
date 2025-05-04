@@ -48,6 +48,9 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
+      <div className={styles.row_holder}>
+        <Location_component className={styles.row_element}/>
+      </div>
         <div className={styles.row_holder}>
           <Map className={styles.row_element}/>
 

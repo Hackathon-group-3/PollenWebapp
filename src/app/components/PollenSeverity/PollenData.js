@@ -1,12 +1,13 @@
 import { getForecast } from "@/app/lib/getForecast";
-import { getGeoLocation } from "@/app/lib/getGeoLocation";
+// import { getGeoLocation } from "@/app/lib/getGeoLocation";
 import PollenSeverity from "./PollenSeverity";
 
 // Connect to 1. User location Input Location Component
 
 export default async function PollenData () {
     // Passing in temp. zip code from Map function
-    const geoData = await getGeoLocation(95126);
+    // const geoData = await getGeoLocation(95126);
+    const geoData = null;
 
     if (!geoData) {
         return <p> Unable to load map data. Please try again.</p>
