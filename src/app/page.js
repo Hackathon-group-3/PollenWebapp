@@ -35,6 +35,7 @@ export default function Home() {
       const forecast = (await forecastResponse.json()).data;
 
       setForecastData(forecast);
+      console.log("Forecast Data:", forecast);
     } catch (error) {
       setError(error.message);
       setForecastData(null);
