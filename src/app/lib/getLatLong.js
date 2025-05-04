@@ -21,6 +21,7 @@ export const getLatitudeLongitude = async (zipcode) => {
     return {
       latitude: location.lat,
       longitude: location.lng,
+      cityName,
     };
   } catch (error) {
     console.error("Error processing the request:", error);
