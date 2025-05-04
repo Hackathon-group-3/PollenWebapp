@@ -1,11 +1,16 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import Map from "./components/Map/Map.js";
+import PollenData from "./components/PollenSeverity/PollenData"
 
 export default function Home() {
   return (
     <div className={styles.page}>
       <Map />
+
+      <PollenData 
+      />
+
       <main className={styles.main}>
         <Image
           className={styles.logo}
