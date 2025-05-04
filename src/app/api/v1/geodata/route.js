@@ -14,7 +14,6 @@ export const GET = async (request) => {
     }
 
     const geoData = await getGeoLocation(zipcode);
-    console.log("GEO DATA", geoData);
 
     if (!geoData) {
       return NextResponse.json(
