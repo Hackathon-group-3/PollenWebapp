@@ -2,9 +2,8 @@
 import Location_component from "./components/locationSearch/locationSearch";
 import styles from "./page.module.css";
 import Map from "./components/Map/Map.js";
-import PollenData from "./components/PollenSeverity/PollenData"
+import PollenData from "./components/PollenSeverity/PollenData";
 import { useState } from "react";
-
 
 export default function Home() {
   const [forecastData, setForecastData] = useState(null);
@@ -34,10 +33,10 @@ export default function Home() {
         throw new Error(err.message || "Failed to fetch forecast");
       }
 
-      const forecast = (await forecastResponse.json()).data;
+      const forecast = await forecastResponse.data;
 
-      setForecastData(forecast);
-      console.log("Forecast Data:", forecast);
+      setForecastData(forecastData);
+      console.log("Forecast Data:", forecastData);
     } catch (error) {
       setError(error.message);
       setForecastData(null);
@@ -48,20 +47,19 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-      <div className={styles.row_holder}>
-        <Location_component className={styles.row_element}/>
-      </div>
         <div className={styles.row_holder}>
-          <Map className={styles.row_element}/>
-
-          <PollenData className={styles.row_element}/>
+          <Location_component
+            onSearch={handleSearch}
+            className={styles.row_element}
+          />
+        </div>
+        <div className={styles.row_holder}>
+          <PollenData className={styles.row_element} />
         </div>
 
+        {geoData && <Map geoData={geoData} className={styles.row_element} />}
       </main>
-      <footer className={styles.footer}>
-       
-      </footer>
-
+      <footer className={styles.footer}></footer>
     </div>
   );
 }
