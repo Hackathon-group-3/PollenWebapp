@@ -30,9 +30,56 @@
 .main {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 32px;
+  width: 100%;
   grid-row-start: 2;
 }
+
+.location_component{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2cap;
+  height: 10%;
+  width: 70%;
+  border-radius: 4px;
+}
+
+.location_input{
+  background-color: var(--gray-alpha-200);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 2cap;
+  width: auto;
+  border-radius: 4px;
+}
+
+#form_parent{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.location_card{
+  background-color: var(--gray-alpha-200);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 1cap;
+  width: 60%;
+  border-radius: 4px;
+}
+
+
 
 .main ol {
   font-family: var(--font-geist-mono);
