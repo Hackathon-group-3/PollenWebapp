@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  align-content: space-evenly;
+}
+.card {
+  margin: 0;
+  padding: 1.5rem;
+  border: 1px solid #e4e4e7;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.text h1 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: black;
+
+  padding-bottom: 0.8rem;
+}
+
+.text p {
+  font-size: 1rem;
+  line-height: 1.25rem;
+  font-weight: 400;
+  color: #71717a;
+  padding-bottom: 0.6rem;
+}
+
+.city {
+  font-weight: 600; /* correct property for weight */
+  color: black;
+}
+
+.map {
+  border-radius: 7px;
+}
