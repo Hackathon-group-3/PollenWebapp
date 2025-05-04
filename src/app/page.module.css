@@ -46,9 +46,16 @@
 .main {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 32px;
+  width: 100%;
   grid-row-start: 2;
 }
+
+
+
+
 
 .main ol {
   font-family: var(--font-geist-mono);

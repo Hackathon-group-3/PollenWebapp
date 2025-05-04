@@ -1,0 +1,36 @@
+.location_component {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    min-width: 40cap;
+  }
+  
+  .location_card {
+    width: 100%;
+    min-width: 40cap;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .location_input {
+    margin: 10px 0;
+    width: 100%;
+  }
+
+#form_parent{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  min-width: 35cap;
+}
+
+#location_text_input{
+    min-width: 24cap;
+    margin: 1cap;
+}
+
+
+

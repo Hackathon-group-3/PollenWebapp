@@ -1,0 +1,64 @@
+import { NextResponse } from "next/server";
+import axios from "axios";
+
+export const GET = async (request) => {
+  try {
+    const { searchParams } = new URL(request.url);
+    const zipcode = searchParams.get("zipcode");
+
+    if (!zipcode) {
+      return NextResponse.json(
+        { message: "Zipcode parameter is required" },
+        { status: 400 },
+      );
+    }
+
+    const geoData = await getGeoLocation(zipcode);
+
+    if (!geoData) {
+      return NextResponse.json(
+        { message: "Failed to get geolocation data" },
+        { status: 500 },
+      );
+    }
+
+    return NextResponse.json({ data: geoData });
+  } catch (error) {
+    console.error(error);
+    return NextResponse.json(
+      { message: error.message || "Internal Server Error" },
+      { status: error.status || 500 },
+    );
+  }
+};
+
+export const getGeoLocation = async (zipcode) => {
+  const secret = process.env.API_KEY;
+
+  try {
+    const response = await axios.get(
+      `https://maps.googleapis.com/maps/api/geocode/json?key=${secret}&components=postal_code:${zipcode}`,
+      {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json;charset=UTF-8",
+        },
+      },
+    );
+
+    const location = response.data.results?.[0]?.geometry?.location;
+    const cityInfo = response.data.results?.[0]?.formatted_address;
+    const cityName = cityInfo
+      ? cityInfo.split(",").slice(0, -1).join(",").trim()
+      : "Unknown location";
+
+    return {
+      latitude: location.lat,
+      longitude: location.lng,
+      cityName,
+    };
+  } catch (error) {
+    console.error("Error processing the request:", error);
+    return null;
+  }
+};
