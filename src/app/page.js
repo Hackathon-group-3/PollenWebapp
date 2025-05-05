@@ -33,9 +33,11 @@ export default function Home() {
         throw new Error(err.message || "Failed to fetch forecast");
       }
 
+      const forecast = (await forecastResponse.json()).data;
       const forecast = await forecastResponse.json();
 
-      setForecastData(forecast.data);
+      setForecastData(forecast);
+      console.log("Forecast Data:", forecast);
     } catch (error) {
       setError(error.message);
       setForecastData(null);
@@ -60,6 +62,7 @@ export default function Home() {
 
         
       </main>
+
       <footer className={styles.footer}></footer>
     </div>
   );
