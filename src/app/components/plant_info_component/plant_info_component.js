@@ -29,10 +29,11 @@ export default function PlantInfoComponent({ forecastData: forecast }) {
                 </div>
                 <CardContent>
                   <h3 className={styles.plant_card_content}>{plant.displayName}</h3>
-                  <p className={styles.plant_card_content}>{plantDescription.family}</p>
-                  <p className={styles.plant_card_content}>{plant.description}</p>
+                  <p className={styles.plant_card_content}>Family: {plantDescription.family}</p>
+                  <p className={styles.plant_card_content}>Season: {plantDescription.season}</p>
+                  <p className={styles.plant_card_content}>{plantDescription.specialShapes}</p>
                   {plantindexInfo.value && (
-                      <div>
+                      <div className={styles.plant_card_content}>
                         <span>Allergy Potential:</span>
                         <div>
                           {Array.from({ length: 5 }).map((_, i) => (

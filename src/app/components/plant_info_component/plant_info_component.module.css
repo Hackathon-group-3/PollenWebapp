@@ -24,8 +24,9 @@
 
 .plant_card_content{
     display: flex;
-    flex-direction: column;
-    gap: 8px;
+    flex-direction: row;
+    gap: 4px;
+    margin: 0.5cap;
 }
 
 .plant_card_image{
