@@ -33,7 +33,7 @@
   border: none;
   font-weight: 600;
   font-size: 0.9rem;
-  border-radius: 2rem; 
+  border-radius: 2rem;
 }
 
 .indexHeader {
@@ -50,23 +50,22 @@
 }
 
 .indexValue {
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-size: 1rem;
   color: red;
 }
 
 .high {
-  background-color: #ffe4e6; 
+  background-color: #ffe4e6;
   color: darkred;
 }
 
 .moderate {
-  background-color: #fef9c3; 
+  background-color: #fef9c3;
   color: #ca8a04;
 }
 
 .low {
-  background-color: #d1fae5; 
+  background-color: #d1fae5;
   color: #065f46;
 }
 
