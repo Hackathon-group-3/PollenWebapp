@@ -3,7 +3,7 @@ import Image from "next/image";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { useTheme } from '@mui/material/styles';
-import AdjustIcon from '@mui/icons-material/Adjust';
+import Brightness1Icon from '@mui/icons-material/Brightness1';
 
 export default function PlantInfoComponent({ forecastData: forecast }) {
   if (forecast.length === 0) {
@@ -37,7 +37,7 @@ export default function PlantInfoComponent({ forecastData: forecast }) {
                         <span>Allergy Potential:</span>
                         <div>
                           {Array.from({ length: 5 }).map((_, i) => (
-                            <AdjustIcon 
+                            <Brightness1Icon
                             key={i}  
                             sx = {{ color: i < plantindexInfo.value ? "red" : "gray" }}
                             />
