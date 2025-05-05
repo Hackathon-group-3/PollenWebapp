@@ -5,15 +5,11 @@ import Map from "./components/Map/Map.js";
 import PollenData from "./components/PollenSeverity/PollenData";
 import { useState } from "react";
 import PlantInfoComponent from "./components/plant_info_component/plant_info_component.js";
-import HealthRecs from "./components/HealthRecs/HealthRecs";
 
 export default function Home() {
   const [forecastData, setForecastData] = useState(null);
   const [geoData, setGeoData] = useState(null);
   const [error, setError] = useState(null);
-  const [sensitiveGroups, setSensitiveGroups] = useState([]);
-  const [safeActivities, setSafeActivities] = useState([]);
-
 
   async function handleSearch(location_data) {
     try {
@@ -41,12 +37,9 @@ export default function Home() {
       }
 
       const forecast = (await forecastResponse.json()).data;
+
       setForecastData(forecast);
-
-      setSensitiveGroups(forecast.sensitiveGroups || []);
-      setSafeActivities(forecast.safeActivities || []);
-
-      // console.log("Forecast Data:", forecast);
+      console.log("Forecast Data:", forecast);
     } catch (error) {
       setError(error.message);
       setForecastData(null);
@@ -66,21 +59,11 @@ export default function Home() {
           />
           {(forecastData && geoData) && <PollenData geoData={geoData} forecastData={forecastData} className={styles.row_element} />}
         </div>
-
-        
         <div className={styles.row_holder}>
         {geoData && <Map geoData={geoData} className={styles.row_element} />}
-
-        {forecastData && (
-            <HealthRecs
-              sensitiveGroups={sensitiveGroups}
-              safeActivities={safeActivities}
-              className={styles.row_element}
-            />
-          )}
         {forecastData && <PlantInfoComponent forecastData={forecastData} className={styles.row_element} />}
         </div>
-
+      
       </main>
       <footer className={styles.footer}>
       </footer>
