@@ -4,6 +4,7 @@ import styles from "./page.module.css";
 import Map from "./components/Map/Map.js";
 import PollenData from "./components/PollenSeverity/PollenData";
 import { useState } from "react";
+import PlantInfoComponent from "./components/plant_info_component/plant_info_component.js";
 
 export default function Home() {
   const [forecastData, setForecastData] = useState(null);
@@ -46,6 +47,7 @@ export default function Home() {
 
   return (
     <div className={styles.page}>
+
       <main className={styles.main}>
         <div className={styles.row_holder}>
           <Location_component
@@ -57,12 +59,13 @@ export default function Home() {
         </div>
         <div className={styles.row_holder}>
         {geoData && <Map geoData={geoData} className={styles.row_element} />}
+        {forecastData && <PlantInfoComponent forecastData={forecastData} className={styles.row_element} />}
         </div>
-
-        
+      
       </main>
+      <footer className={styles.footer}>
+      </footer>
 
-      <footer className={styles.footer}></footer>
     </div>
   );
 }
