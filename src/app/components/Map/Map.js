@@ -1,9 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "./map.module.css";
 
-export default function Map({ geoData }) {
-  const [locationData] = useState(geoData);
+export default function Map({ geoData, forecastData }) {
+  const [locationData, setLocationData] = useState(geoData);
+
+  useEffect(() => {
+    if (geoData) {
+      setLocationData(geoData);
+    }
+  }, [geoData]);
+
+  if (!locationData) return <p>Unable to load map data.</p>;
 
   const { latitude, longitude, cityName } = locationData;
   const mapUrl = `/api/v1/staticmap?latitude=${latitude}&longitude=${longitude}`;
@@ -17,18 +25,14 @@ export default function Map({ geoData }) {
             Showing data for <span className={styles.city}>{cityName}</span>
           </p>
         </div>
-        {latitude && longitude ? (
-          <Image
-            className={styles.map}
-            src={mapUrl}
-            alt={`Static map of ${cityName}`}
-            width={400}
-            height={400}
-            loading="lazy"
-          />
-        ) : (
-          <p>Cannot render map. Please check the location data.</p>
-        )}
+        <Image
+          className={styles.map}
+          src={mapUrl}
+          alt={`Static map of ${cityName}`}
+          width={400}
+          height={400}
+          loading="lazy"
+        />
       </div>
     </div>
   );
