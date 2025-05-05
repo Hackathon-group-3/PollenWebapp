@@ -59,8 +59,9 @@ export default function Home() {
         </div>
         <div className={styles.row_holder}>
         {geoData && <Map geoData={geoData} className={styles.row_element} />}
+        {forecastData && <PlantInfoComponent forecastData={forecastData} className={styles.row_element} />}
         </div>
-      <PlantInfoComponent plants={[]}/>
+      
       </main>
       <footer className={styles.footer}>
       </footer>

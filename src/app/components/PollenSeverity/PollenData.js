@@ -13,7 +13,7 @@ export default function PollenData({ geoData: location,  forecastData: forecast 
   if (todays_forecast?.plantInfo?.length > 0){
     for (const plant in todays_forecast.plantInfo) {
       const plantInfo = todays_forecast.plantInfo[plant];
-      forecastText += `${plantInfo.displayName},`
+      forecastText += `${plantInfo.displayName}, `
       if (plantInfo?.indexInfo){
         UPIndex += plantInfo.indexInfo.value
       }
