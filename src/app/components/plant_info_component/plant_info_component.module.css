@@ -21,6 +21,37 @@
     margin-bottom: 16px;
     min-width: 585px;
 }
+.Card_ScrollButton{
+    display: flex;
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+
+}
+
+.Card_ScrollButton:hover{
+    display: flex;
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+
+}
+
+.Card_ScrollIcon{
+    min-width: 48px;
+    min-height: 48px;
+}
+.card_overparent{
+    display: flex; 
+}
 
 .plant_card_content{
     display: flex;

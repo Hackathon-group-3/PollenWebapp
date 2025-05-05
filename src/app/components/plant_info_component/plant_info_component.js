@@ -1,22 +1,51 @@
+
+
 import styles from "./plant_info_component.module.css";
 import Image from "next/image";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import { useTheme } from '@mui/material/styles';
+import Button  from "@mui/material/Button";
 import Brightness1Icon from '@mui/icons-material/Brightness1';
+import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
+import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
+import React, { useState, useRef, useEffect } from "react";
 
 export default function PlantInfoComponent({ forecastData: forecast }) {
+  const [scrollposition, setScrollPosition] = useState(0);
+  const SCROLL_WIDTH = 585;
+  const scrollRef = useRef(null);
+  let scrollmultiplier = -1;
+
+  const handle_scroll = (ScrollAmount) => {
+    let new_scroll_position = scrollposition - ScrollAmount;
+    if (new_scroll_position < 0) {
+      new_scroll_position = 0;
+    } else if (scrollmultiplier * SCROLL_WIDTH < new_scroll_position) {
+      new_scroll_position = scrollmultiplier* SCROLL_WIDTH 
+    }
+    console.log(new_scroll_position)
+    setScrollPosition(new_scroll_position);
+    scrollRef.current.scrollLeft = new_scroll_position;
+  }
+
   if (forecast.length === 0) {
     return <p>No plants in this category are currently affecting pollen levels.</p>;
   }
+
   const todays_forecast = forecast[0];
   return (
-    <div className={styles.plant_card_parent}>
+    <div className={styles.card_overparent}>
+      <Button className={styles.Card_ScrollButton} onClick={() => { handle_scroll(-SCROLL_WIDTH)}}>
+        <ArrowCircleRightIcon className={styles.Card_ScrollIcon}/>
+
+      </Button>
+      <div className={styles.plant_card_parent} ref={scrollRef}>
       {
         todays_forecast.plantInfo.map((plant, index) => {
           const plantDescription = plant?.plantDescription;
           const plantindexInfo = plant?.indexInfo;
           if (plantDescription && plantindexInfo) {
+            scrollmultiplier++
             return (
               <Card key={index} className={styles.plant_card}>
                 <div className={styles.plant_card_image_wrapper}>
@@ -52,21 +81,10 @@ export default function PlantInfoComponent({ forecastData: forecast }) {
         })
       }
     </div>
+    <Button className={styles.Card_ScrollButton} onClick={() => { handle_scroll(SCROLL_WIDTH)}}>
+        <ArrowCircleLeftIcon  className={styles.Card_ScrollIcon}/>
+    </Button>
+  </div>
+
   );
 }
-
-
-              // plants.map((plants,index) => {
-              //     <Card key={index}>
-              //     <div>
-              //       <Image src={plant.imageUrl} alt={plant.name} fill/>
-              //     </div>
-              //     <CardContent>
-              //       <h3>{plant.name}</h3>
-              //       <p>{plant.scientificName}</p>
-              //       <p>{plant.description}</p>
-        
-
-              //     </CardContent>
-              //   </Card>
-              // })
