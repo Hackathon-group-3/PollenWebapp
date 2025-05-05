@@ -17,6 +17,8 @@
   justify-content: center;
 }
 
+/* Removed dark mode- light mode looks cleaner!
+
 @media (prefers-color-scheme: dark) {
   .page {
     --gray-rgb: 255, 255, 255;
@@ -26,7 +28,7 @@
     --button-primary-hover: #ccc;
     --button-secondary-hover: #1a1a1a;
   }
-}
+} */
 .row_holder{
   display: flex;
   flex-direction: row;
@@ -183,9 +185,9 @@ a.secondary {
     justify-content: center;
   }
 }
-
+/* 
 @media (prefers-color-scheme: dark) {
   .logo {
     filter: invert();
   }
-}
+} */
