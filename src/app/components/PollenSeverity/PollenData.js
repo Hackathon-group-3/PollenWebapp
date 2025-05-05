@@ -13,14 +13,14 @@ export default function PollenData({ geoData: location,  forecastData: forecast 
   if (todays_forecast?.plantInfo?.length > 0){
     for (const plant in todays_forecast.plantInfo) {
       const plantInfo = todays_forecast.plantInfo[plant];
-      forecastText += `${plantInfo.displayName}, `
+      forecastText += `${plantInfo.displayName},`
       if (plantInfo?.indexInfo){
         UPIndex += plantInfo.indexInfo.value
       }
     }
     
     UPIndex /= todays_forecast.plantInfo.length
-    UPIndex = Math.round(UPIndex)
+    UPIndex = Math.round(UPIndex * 10) / 10
   } else{
     forecastText = "No specific allergens detected today.";
     UPIndex = 0
