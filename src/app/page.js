@@ -15,7 +15,9 @@ export default function Home() {
     try {
       setError(null);
 
-      const geoResponse = await fetch(`/api/v1/geodata?location_data=${location_data}`);
+      const geoResponse = await fetch(
+        `/api/v1/geodata?location_data=${location_data}`,
+      );
 
       if (!geoResponse.ok) {
         const err = await geoResponse.json();
