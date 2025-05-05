@@ -1,36 +1,58 @@
 import PollenSeverity from "./PollenSeverity";
 
-export default function PollenData({ geoData: location,  forecastData: forecast }) {
-  //TODO use forecast object from web console and pass the correct properties here
-  if (!location|| location.length === 0 || !forecast || forecast.length === 0) {
+export default function PollenData({
+  geoData: location,
+  forecastData: forecast,
+}) {
+  if (
+    !location ||
+    location.length === 0 ||
+    !forecast ||
+    forecast.length === 0
+  ) {
     return <p>No forecast available.</p>;
   }
 
   const todays_forecast = forecast[0];
   const cityName = location?.cityName || "Unknown";
-  let forecastText = `Main allergens: `
-  let UPIndex = 0
-  if (todays_forecast?.plantInfo?.length > 0){
-    for (const plant in todays_forecast.plantInfo) {
-      const plantInfo = todays_forecast.plantInfo[plant];
-      forecastText += `${plantInfo.displayName}, `
-      if (plantInfo?.indexInfo){
-        UPIndex += plantInfo.indexInfo.value
+  let forecastText = "";
+  let totalUPIndex = 0;
+  let pollenTypeCount = 0;
+  let firstPollenTypeIndexDescription = "";
+
+  if (todays_forecast?.pollenTypeInfo?.length > 0) {
+    for (const pollenType of todays_forecast.pollenTypeInfo) {
+      forecastText += `${pollenType.displayName}, `;
+      if (pollenType?.indexInfo?.value !== undefined) {
+        totalUPIndex += pollenType.indexInfo.value;
+        pollenTypeCount++;
+        if (firstPollenTypeIndexDescription === "") {
+          firstPollenTypeIndexDescription = pollenType.indexInfo.indexDescription;
+        }
       }
     }
-    
-    UPIndex /= todays_forecast.plantInfo.length
-    UPIndex = Math.round(UPIndex * 10) / 10
-  } else{
+
+    const averageUPIndex = totalUPIndex / pollenTypeCount;
+
+    forecastText = forecastText.slice(0, -2); // Remove the trailing comma and space
+
+    return (
+      <PollenSeverity
+        UPIndex={averageUPIndex}
+        todaysForecast={forecastText}
+        indexDescription={firstPollenTypeIndexDescription}
+        locationName={cityName}
+      />
+    );
+  } else {
     forecastText = "No specific allergens detected today.";
-    UPIndex = 0
+    return (
+      <PollenSeverity
+        UPIndex={0}
+        todaysForecast={forecastText}
+        locationName={cityName}
+      />
+    );
   }
-  return (
-    <PollenSeverity
-      UPIndex={UPIndex}
-      todaysForecast={forecastText}
-      locationName={cityName}
-    />
-  );
 }
 
