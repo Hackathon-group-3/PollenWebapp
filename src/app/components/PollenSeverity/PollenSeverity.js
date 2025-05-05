@@ -1,7 +1,7 @@
 import styles from "./PollenSeverity.module.css";
 
 export default function PollenSeverity({ UPIndex, todaysForecast, locationName }) {
-    // console.log('PollenSeverity Props:', { UPIndex, todaysForecast, locationName });
+    console.log('PollenSeverity Props:', { UPIndex, todaysForecast, locationName });
   const getSeverity = () => {
     if (UPIndex <= 3) {
       return <span className={styles.low}>Low</span>;

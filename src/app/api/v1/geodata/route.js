@@ -4,16 +4,16 @@ import axios from "axios";
 export const GET = async (request) => {
   try {
     const { searchParams } = new URL(request.url);
-    const zipcode = searchParams.get("zipcode");
+    const location_data = searchParams.get("location_data");
 
-    if (!zipcode) {
+    if (!location_data) {
       return NextResponse.json(
-        { message: "Zipcode parameter is required" },
+        { message: "location_data parameter is required" },
         { status: 400 },
       );
     }
 
-    const geoData = await getGeoLocation(zipcode);
+    const geoData = await getGeoLocation(location_data);
 
     if (!geoData) {
       return NextResponse.json(
@@ -32,12 +32,20 @@ export const GET = async (request) => {
   }
 };
 
-export const getGeoLocation = async (zipcode) => {
+export const getGeoLocation = async (data) => {
   const secret = process.env.API_KEY;
 
+
+
   try {
-    const response = await axios.get(
-      `https://maps.googleapis.com/maps/api/geocode/json?key=${secret}&components=postal_code:${zipcode}`,
+    let link = ``
+    if (isNumeric(data)){
+      link = `https://maps.googleapis.com/maps/api/geocode/json?key=${secret}&components=postal_code:${data}`
+    }
+    else{
+      link = `https://maps.googleapis.com/maps/api/geocode/json?key=${secret}&address=${data.replaceAll(" ", "%20")}`
+    }
+    const response = await axios.get( link,
       {
         headers: {
           Accept: "application/json",
@@ -62,3 +70,13 @@ export const getGeoLocation = async (zipcode) => {
     return null;
   }
 };
+
+
+function isNumeric(str) {
+  if (typeof str != "string"){ 
+    return false 
+  }else{
+    return !isNaN(str) && !isNaN(parseFloat(str)) 
+  }
+  
+}

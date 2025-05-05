@@ -10,11 +10,11 @@ export default function Home() {
   const [geoData, setGeoData] = useState(null);
   const [error, setError] = useState(null);
 
-  async function handleSearch(zipcode) {
+  async function handleSearch(location_data) {
     try {
       setError(null);
 
-      const geoResponse = await fetch(`/api/v1/geodata?zipcode=${zipcode}`);
+      const geoResponse = await fetch(`/api/v1/geodata?location_data=${location_data}`);
 
       if (!geoResponse.ok) {
         const err = await geoResponse.json();
@@ -33,10 +33,9 @@ export default function Home() {
         throw new Error(err.message || "Failed to fetch forecast");
       }
 
-      const forecast = await forecastResponse.data;
+      const forecast = await forecastResponse.json();
 
-      setForecastData(forecastData);
-      console.log("Forecast Data:", forecastData);
+      setForecastData(forecast.data);
     } catch (error) {
       setError(error.message);
       setForecastData(null);
@@ -51,13 +50,15 @@ export default function Home() {
           <Location_component
             onSearch={handleSearch}
             className={styles.row_element}
+
           />
+          {(forecastData && geoData) && <PollenData geoData={geoData} forecastData={forecastData} className={styles.row_element} />}
         </div>
         <div className={styles.row_holder}>
-          <PollenData className={styles.row_element} />
+        {geoData && <Map geoData={geoData} className={styles.row_element} />}
         </div>
 
-        {geoData && <Map geoData={geoData} className={styles.row_element} />}
+        
       </main>
       <footer className={styles.footer}></footer>
     </div>
