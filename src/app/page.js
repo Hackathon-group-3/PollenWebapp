@@ -14,7 +14,9 @@ export default function Home() {
     try {
       setError(null);
 
-      const geoResponse = await fetch(`/api/v1/geodata?location_data=${location_data}`);
+      const geoResponse = await fetch(
+        `/api/v1/geodata?location_data=${location_data}`,
+      );
 
       if (!geoResponse.ok) {
         const err = await geoResponse.json();
@@ -45,24 +47,30 @@ export default function Home() {
   }
 
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <div className={styles.row_holder}>
-          <Location_component
-            onSearch={handleSearch}
-            className={styles.row_element}
-
-          />
-          {(forecastData && geoData) && <PollenData geoData={geoData} forecastData={forecastData} className={styles.row_element} />}
-        </div>
-        <div className={styles.row_holder}>
-        {geoData && <Map geoData={geoData} className={styles.row_element} />}
-        </div>
-
-        
-      </main>
-
-      <footer className={styles.footer}></footer>
+    <div>
+      <div className={styles.page}>
+        <main className={styles.main}>
+          <div className={styles.row_holder}>
+            <Location_component
+              onSearch={handleSearch}
+              className={styles.row_element}
+            />
+            {forecastData && geoData && (
+              <PollenData
+                geoData={geoData}
+                forecastData={forecastData}
+                className={styles.row_element}
+              />
+            )}
+          </div>
+          <div className={styles.row_holder}>
+            {geoData && (
+              <Map geoData={geoData} className={styles.row_element} />
+            )}
+          </div>
+        </main>
+        <footer className={styles.footer}></footer>
+      </div>
     </div>
   );
 }
