@@ -18,18 +18,18 @@ const developers = [
   {
     name: "Alejandro Patino Camargo",
     role: "Fullstack Developer",
-    bio: "I help empower underrepresented communities through open source. I specialize in the backend, and love tinkering my neovim workflow",
+    bio: "I help empower underrepresented communities through open source. I specialize in the backend, and love tinkering my neovim workflow.",
     image: "/avatar/alejandro.jpeg",
     github: "https://github.com/alejandroo-pc",
     linkedin: "https://www.linkedin.com/in/alejandropatinoc/",
   },
   {
     name: "Tianna Spears",
-    role: "Frontent Developer",
-    bio: "Pariatur veniam id do sit pariatur ut in officia enim officia. Nisi enim in laborum exercitation voluptate veniam tempor.",
-    image: "/placeholder.svg?height=400&width=400",
-    github: "https://github.com/michaelrodriguez",
-    linkedin: "https://linkedin.com/in/michaelrodriguez",
+    role: "Frontend Developer",
+    bio: "Frontend dev, currently learning Node / Express.js to become a fullstack dev. I'm passionate about making intentional change in marginalized communities.",
+    image: "/avatar/tianna.png",
+    github: "https://github.com/tianna-spears",
+    linkedin: "https://www.linkedin.com/in/tiannasp/",
   },
 ];
 
