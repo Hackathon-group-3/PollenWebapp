@@ -19,7 +19,7 @@ function Header() {
             <Typography
               variant="h5"
               noWrap
-              component="a"
+              // component="a" Removing to see if hydration bug is resolved
               sx={{
                 mr: 2,
                 display: { xs: "none", md: "flex" },
