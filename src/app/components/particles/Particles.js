@@ -67,10 +67,10 @@ const ParticleBackground = ({ children }) => {
           density: {
             enable: true,
           },
-          value: 32,
+          value: 33,
         },
         opacity: {
-          value: 0.7,
+          value: 0.9,
         },
         shape: {
           type: "circle",
