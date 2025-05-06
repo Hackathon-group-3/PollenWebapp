@@ -7,6 +7,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import Link from "next/link";
+import CircleIcon from "@mui/icons-material/Circle";
 
 const pages = [
   { label: "Meet the Developers", href: "/developers" },
@@ -30,7 +31,9 @@ function Header() {
                 textDecoration: "none",
               }}
             >
-              POLLEN
+              P
+              <CircleIcon sx={{ fontSize: "2rem", color: "yellow" }} />
+              LLEN
             </Typography>
           </Link>
           <Box
