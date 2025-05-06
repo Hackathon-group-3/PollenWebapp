@@ -7,7 +7,7 @@ export default function HealthRecs({
     sensitiveGroups = [], 
     safeActivities = [] 
 }) {
-
+    // console.log(UPIndex, sensitiveGroups, safeActivities);
     return (
         <div className={styles.container}>
             <div className={styles.card}>
@@ -28,9 +28,7 @@ export default function HealthRecs({
                             <h2>Health Advisory</h2>
                         </span>
                         <p>The following groups should take precautions due to the current pollen levels:</p>
-                    </div>
-
-                    <div className={styles.advisoryList}>
+                        <div className={styles.advisoryList}>
                         {sensitiveGroups.length > 0 ? (
                             <ul>
                                 {sensitiveGroups.map((group, index) => (
@@ -41,6 +39,9 @@ export default function HealthRecs({
                             <p>No data for sensitive groups available.</p>
                         )}
                     </div>
+                    </div>
+
+
 
                     {/* Safe Activities Section */}
                     <div className={styles.section}>
@@ -53,11 +54,11 @@ export default function HealthRecs({
 
                     <div className={styles.safeActivitiesList}>
                         {safeActivities.length > 0 ? (
-                            <ul>
+                            <div className= {styles.safeActivitiesContainer}>
                                 {safeActivities.map((activity, index) => (
-                                    <li key={index}>{activity}</li>
+                                    <div className={styles.safeActivity} key={index}>{activity}</div>
                                 ))}
-                            </ul>
+                            </div>
                         ) : (
                             <p>No safe activities data available.</p>
                         )}
