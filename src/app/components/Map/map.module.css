@@ -1,5 +1,4 @@
 .container {
-  min-width: 40cap;
   display: flex;
   align-content: space-evenly;
 }
