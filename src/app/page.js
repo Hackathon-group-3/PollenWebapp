@@ -13,6 +13,7 @@ export default function Home() {
   const [error, setError] = useState(null);
   const [sensitiveGroups, setSensitiveGroups] = useState([]);
   const [safeActivities, setSafeActivities] = useState([]);
+  const [UPIndex, setUpIndex] = useState(0);
 
 
   async function handleSearch(location_data) {
@@ -46,7 +47,48 @@ export default function Home() {
       setSensitiveGroups(forecast.sensitiveGroups || []);
       setSafeActivities(forecast.safeActivities || []);
 
-      // console.log("Forecast Data:", forecast);
+
+      const todays_forecast = forecast[0];
+      let totalUPIndex = 0;
+      let plantInfoCount = 0;
+      let prototype_sensitive_groups = [];
+      let prototype_safe_activities = [];
+
+      console.log(todays_forecast);
+
+
+    
+      if (todays_forecast?.plantInfo?.length > 0) {
+        for (const pollenTypeInfo of todays_forecast.pollenTypeInfo) {
+          
+          if (pollenTypeInfo?.healthRecommendations != undefined){
+            
+            
+            for (const healthRecommendation of pollenTypeInfo.healthRecommendations) {
+              prototype_safe_activities.push(healthRecommendation);
+            }
+            
+          }
+          
+        }
+        // console.log(todays_forecast.pollenTypeInfo);
+        for (const plantInfo of todays_forecast.plantInfo) {
+          if (plantInfo?.indexInfo != undefined) {
+            totalUPIndex += plantInfo.indexInfo.value;
+            prototype_sensitive_groups.push(plantInfo.indexInfo.indexDescription);
+            plantInfoCount++;
+          }
+        }
+      }
+      prototype_sensitive_groups = [...new Set(prototype_sensitive_groups)];
+      prototype_safe_activities = [...new Set(prototype_safe_activities)];
+    
+      const averageUPIndex = Math.round(totalUPIndex / plantInfoCount);
+
+      setUpIndex(averageUPIndex);
+      setSafeActivities(prototype_safe_activities);
+      setSensitiveGroups(prototype_sensitive_groups);
+
     } catch (error) {
       setError(error.message);
       setForecastData(null);
@@ -71,14 +113,19 @@ export default function Home() {
         <div className={styles.row_holder}>
         {geoData && <Map geoData={geoData} className={styles.row_element} />}
 
+
+        {forecastData && <PlantInfoComponent forecastData={forecastData} className={styles.row_element} />}
+        </div>
+        <div className={styles.row_holder}> 
         {forecastData && (
             <HealthRecs
+              UPIndex={UPIndex}
               sensitiveGroups={sensitiveGroups}
               safeActivities={safeActivities}
               className={styles.row_element}
             />
           )}
-        {forecastData && <PlantInfoComponent forecastData={forecastData} className={styles.row_element} />}
+
         </div>
 
       </main>

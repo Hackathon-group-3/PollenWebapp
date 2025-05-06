@@ -1,6 +1,27 @@
 .container {
     display: flex;
-    align-content: space-evenly;
+    align-content: center;
+    justify-content: center;
+    width: 70%;
+
+  }
+
+  .safeActivitiesContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: start baseline;
+    justify-content: start;
+    width: 100%
+  }
+
+  .safeActivity{
+    display: flex;
+    width: 100%;
+    margin: 0.5cap;
+    padding: 1cap;
+    border-radius: 10px;
+    background-color: whitesmoke;
+
   }
   
   .card {
@@ -9,6 +30,7 @@
     border: 1px solid #e4e4e7;
     border-radius: 10px;
     background-color: #fff;
+    width: 100%;
   }
   
   .text h1 {

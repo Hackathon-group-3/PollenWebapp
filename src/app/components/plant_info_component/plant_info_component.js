@@ -8,9 +8,16 @@ import Button  from "@mui/material/Button";
 import Brightness1Icon from '@mui/icons-material/Brightness1';
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef} from "react";
+
+// import gsap from 'gsap';
+// import { useGSAP } from '@gsap/react';
+
+// gsap.registerPlugin(useGSAP); 
 
 export default function PlantInfoComponent({ forecastData: forecast }) {
+
+
   const [scrollposition, setScrollPosition] = useState(0);
   const SCROLL_WIDTH = 585;
   const scrollRef = useRef(null);
