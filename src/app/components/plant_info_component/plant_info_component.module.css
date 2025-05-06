@@ -11,6 +11,14 @@
     min-width: 840;
     height: 40cap;
 }
+.plant_card_content_heading{
+    display: flex;
+    flex-direction: row;
+    color: black;
+    gap: 4px;
+    margin: 0.5cap;
+}
+
 
 .plant_card{
     display: flex;
@@ -70,6 +78,7 @@
 .plant_card_content{
     display: flex;
     flex-direction: row;
+    color: #71717a;
     gap: 4px;
     margin: 0.5cap;
 }

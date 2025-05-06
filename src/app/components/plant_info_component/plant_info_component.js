@@ -101,13 +101,12 @@ export default function PlantInfoComponent({ forecastData: forecast }) {
                     />
                   </div>
                   <CardContent>
-                    <h3 className={styles.plant_card_content}>{plant.displayName}</h3>
-                    <h4 className={styles.plant_card_content}> Type: {plantDescription.type}</h4>
-                    <p className={styles.plant_card_content}>Family: {plantDescription.family}</p>
-                    <p className={styles.plant_card_content}>Season: {plantDescription.season}</p>
+                    <h3 className={styles.plant_card_content_heading}>{plant.displayName}</h3>
+                    <p className={styles.plant_card_content}> {plantDescription.family}</p>
+                    <p className={styles.plant_card_content}>{plantDescription.season}</p>
                     <p className={styles.plant_card_content}>{plantDescription.specialShapes}</p>
                     {plantindexInfo.value && (
-                        <div className={styles.plant_card_content}>
+                        <div className={styles.plant_card_content_heading}>
                           <span>Allergy Potential:</span>
                           <div>
                             {Array.from({ length: 5 }).map((_, i) => (
