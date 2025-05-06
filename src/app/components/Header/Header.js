@@ -12,7 +12,10 @@ import CircleIcon from "@mui/icons-material/Circle";
 const pages = [
   { label: "Home", href: "/" },
   { label: "Meet the Developers", href: "/developers" },
-  { label: "Codebase", href: "https://github.com/Hackathon-group-3/PollenWebapp" },
+  {
+    label: "Codebase",
+    href: "https://github.com/Hackathon-group-3/PollenWebapp",
+  },
 ];
 
 function Header() {
@@ -46,7 +49,16 @@ function Header() {
           >
             {pages.map((page) => (
               <Link href={page.href} passHref key={page.label}>
-                <Button sx={{ my: 2, color: "white", display: "block" }}>
+                <Button
+                  sx={{
+                    my: 2,
+                    color: "white",
+                    display: "block",
+                    "&:hover": {
+                      color: "yellow",
+                    },
+                  }}
+                >
                   {page.label}
                 </Button>
               </Link>
