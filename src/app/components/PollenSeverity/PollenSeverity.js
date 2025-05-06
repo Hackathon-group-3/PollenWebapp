@@ -18,9 +18,7 @@ export default function PollenSeverity({
 
   return (
     <div className={styles.container}>
-      <div
-        className={styles.pollen_card}
-      >
+      <div className={styles.card} style={{ backgroundColor: "#FFF" }}>
         <div className={styles.text}>
           <h1>Pollen Forecast</h1>
           {indexDescription && (

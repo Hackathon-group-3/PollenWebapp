@@ -1,7 +1,6 @@
 .container {
   display: flex;
   align-content: space-evenly;
-  
 }
 
 .card {
@@ -10,7 +9,7 @@
   border: 1px solid #e4e4e7;
   border-radius: 10px;
   background-color: #fff;
-  
+  max-width: 100%;
 }
 
 .pollen_card {
@@ -18,11 +17,7 @@
   border: 1px solid #e4e4e7;
   border-radius: 10px;
   background-color: #fff;
-  max-width: 70cap;
-  min-width: 910px;
-  
 }
-
 
 .text h1 {
   font-size: 1.6rem;
