@@ -20,7 +20,7 @@ export default function PollenSeverity({
     <div className={styles.container}>
       <div className={styles.card} style={{ backgroundColor: "#FFF" }}>
         <div className={styles.text}>
-          <h1>Pollen Forecast</h1>
+          <h1 style={{ marginTop: ".5rem" }}>Pollen Forecast</h1>
           {indexDescription && (
             <p
               style={{
@@ -31,7 +31,7 @@ export default function PollenSeverity({
             </p>
           )}
           <div className={styles.severity}>
-            <div style={{ marginTop: "2.7rem" }} className={styles.scaleHeader}>
+            <div style={{ marginTop: "5rem" }} className={styles.scaleHeader}>
               <h4>Universal Pollen Index</h4>
               <span
                 style={{
@@ -65,7 +65,7 @@ export default function PollenSeverity({
         </div>
         <div
           className={styles.summary}
-          style={{ marginTop: "3rem", padding: "1.5rem", borderRadius: "10px" }}
+          style={{ marginTop: "8rem", padding: "1.5rem", borderRadius: "10px" }}
         >
           <p>
             <strong> Main Allergens: </strong> {todaysForecast}
