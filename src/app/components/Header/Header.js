@@ -10,8 +10,9 @@ import Link from "next/link";
 import CircleIcon from "@mui/icons-material/Circle";
 
 const pages = [
-  { label: "Meet the Developers", href: "/developers" },
   { label: "Home", href: "/" },
+  { label: "Meet the Developers", href: "/developers" },
+  { label: "Codebase", href: "https://github.com/Hackathon-group-3/PollenWebapp" },
 ];
 
 function Header() {
