@@ -19,11 +19,7 @@ export default function PollenSeverity({
   return (
     <div className={styles.container}>
       <div
-        className={styles.card}
-        style={{
-          minWidth: "45rem",
-          minHeight: "25rem",
-        }}
+        className={styles.pollen_card}
       >
         <div className={styles.text}>
           <h1>Pollen Forecast</h1>

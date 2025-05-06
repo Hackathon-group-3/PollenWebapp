@@ -32,10 +32,10 @@
 .row_holder{
   display: flex;
   flex-direction: row;
-  gap: 32px;
+  gap: 31px;
   width: 100%;
-  align-items: center;
-  justify-content: center;
+  align-items: start;
+  justify-content: start;
 
   grid-row-start: 2;
 }
