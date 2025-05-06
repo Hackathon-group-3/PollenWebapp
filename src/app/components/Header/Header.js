@@ -8,7 +8,10 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import Link from "next/link";
 
-const pages = ["Meet The Developers"];
+const pages = [
+  { label: "Meet the Developers", href: "/developers" },
+  { label: "Home", href: "/" },
+];
 
 function Header() {
   return (
@@ -19,9 +22,7 @@ function Header() {
             <Typography
               variant="h5"
               noWrap
-              // component="a" Removing to see if hydration bug is resolved
               sx={{
-                mr: 2,
                 display: { xs: "none", md: "flex" },
                 fontFamily: "Verdana",
                 fontWeight: 700,
@@ -40,9 +41,9 @@ function Header() {
             }}
           >
             {pages.map((page) => (
-              <Link href="/developers" passHref key={page}>
+              <Link href={page.href} passHref key={page.label}>
                 <Button sx={{ my: 2, color: "white", display: "block" }}>
-                  {page}
+                  {page.label}
                 </Button>
               </Link>
             ))}
