@@ -3,6 +3,7 @@ import PollenSeverity from "./PollenSeverity";
 export default function PollenData({
   geoData: location,
   forecastData: forecast,
+  UPIndex : index,
 }) {
   if (
     !location ||
@@ -16,29 +17,25 @@ export default function PollenData({
   const todays_forecast = forecast[0];
   const cityName = location?.cityName || "Unknown";
   let forecastText = "";
-  let totalUPIndex = 0;
-  let pollenTypeCount = 0;
   let firstPollenTypeIndexDescription = "";
 
   if (todays_forecast?.pollenTypeInfo?.length > 0) {
     for (const pollenType of todays_forecast.pollenTypeInfo) {
       forecastText += `${pollenType.displayName}, `;
       if (pollenType?.indexInfo?.value !== undefined) {
-        totalUPIndex += pollenType.indexInfo.value;
-        pollenTypeCount++;
         if (firstPollenTypeIndexDescription === "") {
           firstPollenTypeIndexDescription = pollenType.indexInfo.indexDescription;
         }
       }
     }
 
-    const averageUPIndex = totalUPIndex / pollenTypeCount;
+    
 
     forecastText = forecastText.slice(0, -2); // Remove the trailing comma and space
 
     return (
       <PollenSeverity
-        UPIndex={averageUPIndex}
+        UPIndex={index}
         todaysForecast={forecastText}
         indexDescription={firstPollenTypeIndexDescription}
         locationName={cityName}

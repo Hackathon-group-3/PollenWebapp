@@ -106,7 +106,7 @@ export default function Home() {
             className={styles.row_element}
 
           />
-          {(forecastData && geoData) && <PollenData geoData={geoData} forecastData={forecastData} className={styles.row_element} />}
+          {(forecastData && geoData) && <PollenData geoData={geoData} forecastData={forecastData}  UPIndex={UPIndex} className={styles.row_element} />}
         </div>
 
         
