@@ -34,7 +34,7 @@ export default function Location_component( { onSearch }) {
                     className = {styles.location_input} 
                     id = {styles.location_text_input}
                     type="text"
-                    placeholder="Enter a zip code"
+                    placeholder="Enter a zip code or address"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     />
